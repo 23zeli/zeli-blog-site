@@ -34,10 +34,10 @@ export default function RootLayout({
                 <Image src="/next.svg" alt="" width={89} height={18} priority/>
               </Link>
               <nav className="flex items-center gap-4 text-sm font-medium text-zinc-600">
-              <Link href="/post" className="hover:text-zinc-950">
+              <Link href="/" className="hover:text-zinc-950">
                   Home
                 </Link>
-                <Link href="/post" className="hover:text-zinc-950">
+                <Link href="/posts" className="hover:text-zinc-950">
                   Posts
                 </Link>
               </nav>
