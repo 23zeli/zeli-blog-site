@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 type PostPageProps = {
     params: Promise<{id: string}>
 }
@@ -8,6 +10,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
     const post = await response.json();
+
+    if(!post.id) {
+        notFound();
+    }
 
   return (
     <div className="space-y-8">
