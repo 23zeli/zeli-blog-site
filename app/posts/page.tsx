@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+type Posts = {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+};
+
 export default async function PostPage() {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const posts = await response.json();
