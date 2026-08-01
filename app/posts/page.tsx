@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { prisma } from "./lib/prisma";
 
 // type Post = {
 //     userId: number;
@@ -15,6 +16,8 @@ export default async function PostPage() {
     //     throw new Error("failed to fetch Posts")
     // }
     // const posts: Post [] = await response.json();
+
+    const posts = await prisma.post.findMany();
 
   return (
     <div className="space-y-8">
