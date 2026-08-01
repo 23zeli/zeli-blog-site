@@ -18,6 +18,8 @@ export default async function PostPage({ params }: PostPageProps) {
     //     },
     // });
 
+
+    //check if post exists
     if(!post) {
         notFound();
     }
