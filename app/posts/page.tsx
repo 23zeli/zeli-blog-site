@@ -1,23 +1,23 @@
 import Link from "next/link";
-import { prisma } from "./lib/prisma";
+// import { prisma } from "./lib/prisma";
 
-// type Post = {
-//     userId: number;
-//     id: number;
-//     title: string;
-//     body: string;
-// };
+type Post = {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+};
 
 
 
 export default async function PostPage() {
-    // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    // if(!response.ok) {
-    //     throw new Error("failed to fetch Posts")
-    // }
-    // const posts: Post [] = await response.json();
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    if(!response.ok) {
+        throw new Error("failed to fetch Posts")
+    }
+    const posts: Post [] = await response.json();
 
-    const posts = await prisma.post.findMany();
+    // const posts = await prisma.post.findMany();
 
   return (
     <div className="space-y-8">
