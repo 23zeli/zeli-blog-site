@@ -31,7 +31,7 @@ async function PostList ({ params }: PostPageProps) {
 
 
 
-export default async function PostPage({ params }: PostPageProps) {
+export default function PostPage({ params }: PostPageProps) {
 
     // const post = await prisma.post.findUnique({
     //     where: {
