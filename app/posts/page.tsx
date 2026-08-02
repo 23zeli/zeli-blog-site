@@ -1,4 +1,6 @@
+import RecentlyViewedPosts from "@/components/recently-viewed-posts";
 import Link from "next/link";
+import { Suspense } from "react";
 // import { prisma } from "./lib/prisma";
 
 type Post = {
@@ -11,6 +13,7 @@ type Post = {
 
 
 export default async function PostPage() {
+
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     if(!response.ok) {
         throw new Error("failed to fetch Posts")
@@ -40,6 +43,10 @@ export default async function PostPage() {
                     </li>
                 ))}
             </ul>
+
+            <Suspense fallback={<p>Loading recently viewed posts...</p>}>
+                <RecentlyViewedPosts />
+            </Suspense>
         </section>
     </div>
   )
