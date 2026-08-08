@@ -1,20 +1,15 @@
 import RecentlyViewedPosts from "@/components/recently-viewed-posts";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getPosts } from "./lib/utils";
-// import { prisma } from "./lib/prisma";
+// import { getPosts } from "./lib/utils";
+import { prisma } from "./lib/prisma";
+import { createPost } from "@/actions/actions";
 
 
 async function PostsList() {
 
-    const posts =  await getPosts();
-    // const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    // if (!response.ok) {
-    //     throw new Error("failed to fetch Posts");
-    // }
-    // const posts: Post[] = await response.json();
-
-    // const posts = await prisma.post.findMany();
+    // const posts =  await getPosts();
+    const posts = await prisma.post.findMany();
 
     return (
         <ul className="space-y-3">
@@ -53,7 +48,7 @@ export default function PostPage() {
 
             <section className="space-y-4 border-t border-zinc-200 pt-6">
                 <h2 className="text-xl font-semibold text-zinc-950">New Post</h2>
-                <form className="space-y-4">
+                <form action={createPost} className="space-y-4">
                     <label className="block space-y-2">
                         <span className="text-sm font-medium text-zinc-700">Title</span>
                         <input
