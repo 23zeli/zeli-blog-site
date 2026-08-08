@@ -2,7 +2,7 @@
 
 import { prisma } from "@/app/posts/lib/prisma";
 
-async function createPost(formData: FormData) {
+export async function createPost(formData: FormData) {
 
     const title = String(formData.get("title") ?? "").trim();
     const content = String(formData.get("content") ?? "").trim();
