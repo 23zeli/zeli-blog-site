@@ -13,7 +13,9 @@ async function PostsList() {
 
     return (
         <ul className="space-y-3">
-            {posts.slice(0, 5).map((post) => (
+            {posts
+                // .slice(0, 5)
+                .map((post) => (
                 <li key={post.id}>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <Link
