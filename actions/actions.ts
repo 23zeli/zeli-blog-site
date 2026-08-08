@@ -1,7 +1,9 @@
 "use server";
 
 import { prisma } from "@/app/posts/lib/prisma";
-import { revalidatePath } from "next/cache";
+import {
+    // revalidatePath,
+    revalidateTag } from "next/cache";
 
 export async function createPost(formData: FormData) {
 
@@ -15,5 +17,6 @@ export async function createPost(formData: FormData) {
         },
     });
 
-    revalidatePath("/posts");
+    // revalidatePath("/posts");
+    revalidateTag("posts");
 }
