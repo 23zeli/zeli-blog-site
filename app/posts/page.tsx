@@ -73,7 +73,7 @@ export default function PostPage() {
                         />
                     </label>
 
-                    <button className="bg-zinc-950 text-zinc-200 p-2 rounded-md">Create</button>
+                    <button type="submit" className="bg-zinc-950 text-zinc-200 p-2 rounded-md">Create</button>
                 </form>
             </section>
         </div>
