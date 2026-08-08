@@ -51,7 +51,7 @@ export default function PostPage() {
                 </Suspense>
             </section>
 
-            <section className="space-y-4 border-t border-zinc-200 pt-6.">
+            <section className="space-y-4 border-t border-zinc-200 pt-6">
                 <h2 className="text-xl font-semibold text-zinc-950">New Post</h2>
                 <form className="space-y-4">
                     <label className="block space-y-2">
