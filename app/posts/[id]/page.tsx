@@ -1,4 +1,4 @@
-// import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { prisma } from "../lib/prisma";
 
@@ -20,9 +20,9 @@ async function PostList ({ params }: PostPageProps) {
     // const post = await response.json();
 
     //check if post exists
-    // if(!post) {
-    //     notFound();
-    // }
+    if(!post) {
+        notFound();
+    }
 
   return (
     <article className="space-y-4">
@@ -35,8 +35,6 @@ async function PostList ({ params }: PostPageProps) {
     </article>
   )
 }
-
-
 
 export default function PostPage({ params }: PostPageProps) {
 
