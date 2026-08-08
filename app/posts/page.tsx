@@ -50,6 +50,32 @@ export default function PostPage() {
                     <RecentlyViewedPosts />
                 </Suspense>
             </section>
+
+            <section className="space-y-4 border-t border-zinc-200 pt-6.">
+                <h2 className="text-xl font-semibold text-zinc-950">New Post</h2>
+                <form className="space-y-4">
+                    <label className="block space-y-2">
+                        <span className="text-sm font-medium text-zinc-700">Title</span>
+                        <input
+                            name="title"
+                            type="text"
+                            required
+                            className="h-10 w-full rounded-md border border-zinc-300 bg-zinc-50 px-3 text-sm transition-colors focus:border-zinc-500"
+                        />
+                    </label>
+
+                    <label className="block space-y-2">
+                        <span className="text-sm font-medium text-zinc-700">Content</span>
+                        <textarea
+                            name="content"
+                            required
+                            className="h-50 w-full rounded-md border border-zinc-300 bg-zinc-50 px-3 text-sm transition-colors focus:border-zinc-500"
+                        />
+                    </label>
+
+                    <button className="bg-zinc-950 text-zinc-200 p-2 rounded-md">Create</button>
+                </form>
+            </section>
         </div>
     );
 }
