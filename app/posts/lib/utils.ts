@@ -1,4 +1,4 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 
 
 type Post = {
@@ -11,6 +11,7 @@ type Post = {
 export const getPosts = async () => {
     "use cache";
     cacheLife("days");
+    cacheTag("posts");
 
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     if (!response.ok) {
