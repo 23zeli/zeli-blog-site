@@ -4,6 +4,7 @@ import { Suspense } from "react";
 // import { getPosts } from "./lib/utils";
 import { prisma } from "./lib/prisma";
 import { createPost } from "@/actions/actions";
+import UpvoteBtn from "@/components/upp-vote";
 
 
 async function PostsList() {
@@ -24,6 +25,8 @@ async function PostsList() {
                         >
                             {post.title.charAt(0).toUpperCase() + post.title.slice(1)}
                         </Link>
+
+                        <UpvoteBtn />
                     </div>
                 </li>
             ))}
