@@ -20,3 +20,26 @@ export async function createPost(formData: FormData) {
     // revalidatePath("/posts");
     revalidatePath("posts");
 }
+
+//trigger sever action to update the votes count for a specific post
+export async function upvotePost(id: number) {
+    // Validate the post ID
+    if(!Number.isInteger(id)) {
+        throw new Error("Invalid post ID");
+    }
+
+    // Update the votes count for the specified post
+    await prisma.post.update({
+        where: {
+            id,
+        },
+        data: {
+            votes: {
+                increment: 1
+            },
+        },
+    });
+
+    revalidatePath("/posts");
+    revalidatePath(`/posts/${id}`);
+}
