@@ -3,7 +3,7 @@
 import { prisma } from "@/app/posts/lib/prisma";
 import {
     // revalidatePath,
-    revalidateTag } from "next/cache";
+    revalidatePath } from "next/cache";
 
 export async function createPost(formData: FormData) {
 
@@ -18,5 +18,5 @@ export async function createPost(formData: FormData) {
     });
 
     // revalidatePath("/posts");
-    revalidateTag("posts");
+    revalidatePath("posts");
 }
