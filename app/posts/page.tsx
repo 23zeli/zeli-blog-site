@@ -26,7 +26,7 @@ async function PostsList() {
                             {post.title.charAt(0).toUpperCase() + post.title.slice(1)}
                         </Link>
 
-                        <UpvoteBtn />
+                        <UpvoteBtn postId={post.id} votes={post.votes} />
                     </div>
                 </li>
             ))}
