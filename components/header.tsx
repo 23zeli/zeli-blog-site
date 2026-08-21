@@ -1,3 +1,4 @@
+import { LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/components'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,6 +8,13 @@ export default function Header() {
       <Link href="/" className="flex items-center gap-3 font-semibold">
         <Image src="/next.svg" alt="" width={89} height={18} priority/>
       </Link>
+
+      <LoginLink>Sign in</LoginLink>
+
+      <LogoutLink>Sign out</LogoutLink>
+
+      <RegisterLink>Sign up</RegisterLink>
+
       <nav className="flex items-center gap-4 text-sm font-medium text-zinc-600">
       <Link href="/" className="hover:text-zinc-950">
           Home
