@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import { prisma } from "./lib/prisma";
 import { createPost } from "@/actions/actions";
 import UpvoteBtn from "@/components/upp-vote";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
 
 async function PostsList() {
@@ -34,7 +36,13 @@ async function PostsList() {
     );
 }
 
-export default function PostPage() {
+export default async function PostPage() {
+    const { isAuthenticated } = getKindeServerSession();
+    if (!(await isAuthenticated())) {
+        // redirect("/api/auth/kindeAuth");
+        redirect("/api/auth/login");
+    }
+
     return (
         <div className="space-y-8">
             <section className="space-y-4">
