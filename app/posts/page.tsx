@@ -36,12 +36,55 @@ async function PostsList() {
     );
 }
 
-export default async function PostPage() {
+async function AuthenticatedContent() {
     const { isAuthenticated } = getKindeServerSession();
     if (!(await isAuthenticated())) {
         // redirect("/api/auth/kindeAuth");
         redirect("/api/auth/login");
     }
+  return (
+    <>
+        <section>
+
+            <Suspense fallback={<p>Loading posts...</p>}>
+                <PostsList />
+            </Suspense>
+
+            <Suspense fallback={<p>Loading recently viewed posts...</p>}>
+                <RecentlyViewedPosts />
+            </Suspense>
+        </section>
+
+        <section className="space-y-4 border-t border-zinc-200 pt-6">
+            <h2 className="text-xl font-semibold text-zinc-950">New Post</h2>
+            <form action={createPost} className="space-y-4">
+                <label className="block space-y-2">
+                    <span className="text-sm font-medium text-zinc-700">Title</span>
+                    <input
+                        name="title"
+                        type="text"
+                        required
+                        className="h-10 w-full rounded-md border border-zinc-300 bg-zinc-50 px-3 text-sm transition-colors focus:border-zinc-500"
+                    />
+                </label>
+
+                <label className="block space-y-2">
+                    <span className="text-sm font-medium text-zinc-700">Content</span>
+                    <textarea
+                        name="content"
+                        required
+                    />
+                </label>
+
+                <button type="submit" className="bg-zinc-950 text-zinc-200 p-2 rounded-md">Create</button>
+            </form>
+        </section>
+    </>
+  )
+}
+
+
+export default async function PostPage() {
 
     return (
         <div className="space-y-8">
@@ -50,39 +93,9 @@ export default async function PostPage() {
                     Posts
                 </h1>
 
-                <Suspense fallback={<p>Loading posts...</p>}>
-                    <PostsList />
+                <Suspense fallback={<p>Loading authenticated content...</p>}>
+                    <AuthenticatedContent />
                 </Suspense>
-
-                <Suspense fallback={<p>Loading recently viewed posts...</p>}>
-                    <RecentlyViewedPosts />
-                </Suspense>
-            </section>
-
-            <section className="space-y-4 border-t border-zinc-200 pt-6">
-                <h2 className="text-xl font-semibold text-zinc-950">New Post</h2>
-                <form action={createPost} className="space-y-4">
-                    <label className="block space-y-2">
-                        <span className="text-sm font-medium text-zinc-700">Title</span>
-                        <input
-                            name="title"
-                            type="text"
-                            required
-                            className="h-10 w-full rounded-md border border-zinc-300 bg-zinc-50 px-3 text-sm transition-colors focus:border-zinc-500"
-                        />
-                    </label>
-
-                    <label className="block space-y-2">
-                        <span className="text-sm font-medium text-zinc-700">Content</span>
-                        <textarea
-                            name="content"
-                            required
-                            className="h-50 w-full rounded-md border border-zinc-300 bg-zinc-50 px-3 text-sm transition-colors focus:border-zinc-500"
-                        />
-                    </label>
-
-                    <button type="submit" className="bg-zinc-950 text-zinc-200 p-2 rounded-md">Create</button>
-                </form>
             </section>
         </div>
     );
