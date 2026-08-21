@@ -25,7 +25,7 @@ export async function createPost(formData: FormData) {
 export async function upvotePost(id: number) {
     // Validate the post ID
     if(!Number.isInteger(id)) {
-        throw new Error("Invalid post ID");
+        throw new Error("Invalid post id");
     }
 
     // Update the votes count for the specified post
